@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: #31363F;
+}
+
+li, a, button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #EEEEEE;
+    text-decoration: none;
+}
+
+li button {
+    background: none;
+    border: 2px solid #EEEEEE; 
+    border-radius: 10px; 
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+li button:hover {
+    color: #76ABAE;
+    border-color: #76ABAE; 
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #222831;
+}
+
+h1{
+    color: #EEEEEE;
+    background-color: #222831;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.nav-links {
+    background-color: #222831;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%; 
+}
+
+.nav-links li {
+    background-color: #222831;
+    padding: 20px 0; 
+    width: 100%; 
+    text-align: center; 
+    display: block; 
+}
+
+
+.nav-links li a{
+    transition: all 0.3s ease 0s;
+    background-color: #222831;
+}
+
+.nav-links li a:hover{
+    color: #76ABAE;
+}
+.off-screen-menu {
+    background-color: #222831;
+    height: calc(100vh - 80px); 
+    width: 100%;
+    max-width: 200px;
+    position: fixed;
+    top: 82px; 
+    right: -450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+    transition: .3s ease;
+}
+
+.off-screen-menu.active {
+    right: 0;
+}
+.hamburger{
+    background-clip: padding-box;
+    height: 50px;
+    width: 50px;
+    margin-right: 55px;
+    position: relative;
+    background-color: #222831;
+}
+.hamburger span{
+    height: 5px;
+    width: 100%;
+    background-color: #EEEEEE;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    transition: .3s ease;
+    cursor: pointer;
+}
+.hamburger span:nth-child(1){
+    top: 25%;
+}
+.hamburger span:nth-child(3){
+    top: 75%;
+}
+.allTasks {
+    border: 1px solid #EEEEEE;   
+    padding: 20px;            
+    border-radius: 8px;       
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: width 0.3s ease;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.allTasks.menu-active{
+    width: calc(100% - 250px);
+}
+.allTasks ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.allTasks h1{
+    background-color: #31363F;
+    padding-bottom: 20px;
+    font-size: 20px;
+}
+.allTasks button { 
+    border: 2px solid #EEEEEE; 
+    color: #EEEEEE;              
+    border: none;           
+    padding: 5px 20px;      
+    border-radius: 10px;     
+    cursor: pointer;         
+    font-size: 16px;   
+    list-style-type: none;     
+    width: 90%;
+    text-align: start;
+}
+
+.allTasks button:hover {
+    background-color: #76ABAE; 
+    color: #EEEEEE;    
+}
+.create-task-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease;
+    border: 4px solid #EEEEEE; 
+    border-radius: 8px; 
+    z-index: 10;
+    background-color: #EEEEEE;
+    width: 400px;
+    max-width: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+.create-task-box.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.Closing-tab {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.Closing-tab .close-button {
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;  
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 200ms ease;
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.Input {
+    position: relative;
+    padding: 10px;
+}
+.title{
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid #EEEEEE;
+    color: #EEEEEE;
+    border-radius: 2px;
+}
+.placeHolder{
+    position: absolute;
+    top: 20px;
+    left: 18px;
+    font-size: 14px;
+    color: #EEEEEE;
+    transition: 0.3s;
+    pointer-events: none;
+}
+.title:focus + .placeHolder{
+    top: 1px;
+    color: #EEEEEE;
+    background-color: rgb(41, 38, 38);
+}
+.form-control{
+    margin-top: 10px;
+    border: 1px solid #EEEEEE;
+    color: #EEEEEE;
+    border-radius: 2px;
+}
