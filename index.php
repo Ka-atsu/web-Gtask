@@ -23,6 +23,20 @@
             background-color: #e0e0e0 !important;
             color: #000;
         }
+
+         
+        .task-list {
+            display: none; 
+            list-style-type: none;
+            padding: 0;
+        }
+        .task-list.visible {
+            display: block;
+        }
+
+        .dropdown-btn {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -51,6 +65,18 @@
             <button class="create-task-btn">Create Task</button>
         </div>
     </div>
+
+    <div class="create-list-box" id="create-list-box">
+        <div class="Closing-tab">
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="Input">
+            <input type="text" name="title" class="title">
+            <label class="placeHolder">Add List Title</label>
+            <button class="create-task-btn">DONE</button>
+        </div>
+    </div>
+
     <div id="overlay"></div>
 
     <nav class="navbar">

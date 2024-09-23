@@ -52,3 +52,39 @@ taskListDropdownBtn.addEventListener('click', () => {
         ? 'List of Tasks ▲' 
         : 'List of Tasks ▼';
 });
+
+// Show and hide the create-task-box
+const createTaskBtn = document.querySelector('[data-task-target="#create-task-box"]');
+const createTaskBox = document.getElementById('create-task-box');
+const closeTaskBoxBtn = createTaskBox.querySelector('[data-close-button]');
+
+createTaskBtn.addEventListener('click', () => {
+    createTaskBox.classList.add('active');
+    overlay.classList.add('active');
+});
+
+closeTaskBoxBtn.addEventListener('click', () => {
+    createTaskBox.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+// Show and hide the create-list-box when "Create new list" is clicked
+const createNewListBtn = document.getElementById('create-new-list');
+const createListBox = document.getElementById('create-list-box');
+const closeListBoxBtn = createListBox.querySelector('[data-close-button]');
+
+createNewListBtn.addEventListener('click', () => {
+    createListBox.classList.add('active');
+    overlay.classList.add('active');
+});
+
+closeListBoxBtn.addEventListener('click', () => {
+    createListBox.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+overlay.addEventListener('click', () => {
+    createTaskBox.classList.remove('active');
+    createListBox.classList.remove('active');
+    overlay.classList.remove('active');
+});

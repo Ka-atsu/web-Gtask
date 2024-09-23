@@ -158,7 +158,7 @@ h1{
     background-color: #76ABAE; 
     color: #EEEEEE;    
 }
-.create-task-box {
+.create-task-box, .create-list-box {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -172,7 +172,7 @@ h1{
     max-width: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
-.create-task-box.active {
+.create-task-box.active, .create-list-box.active {
     transform: translate(-50%, -50%) scale(1);
 }
 
@@ -242,19 +242,6 @@ h1{
     border: 1px solid #EEEEEE;
     color: #EEEEEE;
     border-radius: 2px;
-}
- /* Styles for dropdown task list */
- .task-list {
-    display: none; /* Initially hide the task list */
-    list-style-type: none;
-    padding: 0;
-}
-.task-list.visible {
-    display: block; /* Show the task list when clicked */
-}
-
-.dropdown-btn {
-    cursor: pointer;
 }
 
 /* Style the create task button */
