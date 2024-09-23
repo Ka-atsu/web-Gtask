@@ -25,56 +25,61 @@
         }
     </style>
 </head>
-    <body>
-            
-        <div class="off-screen-menu" id="off-screen-menu">
-            <ul class="nav-links">
-                <li><button data-task-target="#create-task-box">Create</button></li>
-                <li><a href="#">All Tasks</a></li>
-                <li><a href="#">Starred</a></li>
-            </ul>
-        </div>
-
-        <div class="create-task-box" id="create-task-box">
-            <div class="Closing-tab">
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="Input">
-                <input type="text" name="title" class="title">
-                <label class="placeHolder">Add Title</label>
-                <input type="datetime-local" class="form-control" placeholder="Select DateTime" style="color: white;">
-            </div>
-        </div>
-        <div id="overlay"></div>
-
-        <nav class="navbar">
-            <h1>TASK</h1>
-            <div class="hamburger" id="hamburger">
-                <div class="hamburger-content">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-
-        <div class="allTasks" id="allTasks"> 
-            <ul>
+<body>
+    <div class="off-screen-menu" id="off-screen-menu">
+        <ul class="nav-links">
+            <li><button data-task-target="#create-task-box">Create</button></li>
+            <li><a href="#" id="all-tasks-link">All Tasks (<span id="task-count">0</span>)</a></li>
+            <li><a href="#">Starred</a></li>
+            <li><a href="#" id="list-tasks" class="dropdown-btn">List of Tasks ▼</a>
+                <ul class="task-list" id="task-list">
                 <h1>My Tasks</h1>
-                <li><button>Add a task</button></li>
-            </ul>
+                </ul>
+            </li>
+            <li><a href="#" id="create-new-list">Create new list +</a>
+        </ul>
+    </div>
+
+    <div class="create-task-box" id="create-task-box">
+        <div class="Closing-tab">
+            <button data-close-button class="close-button">&times;</button>
         </div>
+        <div class="Input">
+            <input type="text" name="title" class="title">
+            <label class="placeHolder">Add Title</label>
+            <input type="datetime-local" class="form-control" placeholder="Select DateTime" style="color: white;">
+            <button class="create-task-btn">Create Task</button>
+        </div>
+    </div>
+    <div id="overlay"></div>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="main.js"></script>
-        <script>
-            config ={
-                enableTime:true,
-                dateFormat: "Y-m-d H:i",
-            }
+    <nav class="navbar">
+        <h1>TASK</h1>
+        <div class="hamburger" id="hamburger">
+            <div class="hamburger-content">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="allTasks" id="allTasks"> 
+        <ul>
+            <h1>My Tasks</h1>
+            <li><button id="add-task-btn">Add a task</button></li>
+        </ul>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="main.js"></script>
+    <script>
+        const config = {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        }
         flatpickr("input[type=datetime-local]", config);
-        </script>
-
-    </body>
+    </script>
+</body>
 </html>
