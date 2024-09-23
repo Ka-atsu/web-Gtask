@@ -55,16 +55,10 @@
     </div>
 
     <div class="create-task-box" id="create-task-box">
-        <div class="Closing-tab">
-            <button data-close-button class="close-button">&times;</button>
-        </div>
-        <div class="Input">
-            <input type="text" name="title" class="title">
-            <label class="placeHolder">Add Title</label>
-            <input type="datetime-local" class="form-control" placeholder="Select DateTime" style="color: white;">
-            <button class="create-task-btn">Create Task</button>
-        </div>
+    <div class="Closing-tab">
+        <button data-close-button class="close-button">&times;</button>
     </div>
+<<<<<<< Updated upstream
 
     <div class="create-list-box" id="create-list-box">
         <div class="Closing-tab">
@@ -76,6 +70,16 @@
             <button class="create-task-btn">DONE</button>
         </div>
     </div>
+=======
+    <div class="Input">
+        <form action="submit_task.php" method="POST">
+            <input type="text" name="title" class="title" placeholder="Add Title" required>
+            <input type="datetime-local" name="task_date" class="form-control" placeholder="Select DateTime" required>
+            <button type="submit" class="create-task-btn">Create Task</button>
+        </form>
+    </div>
+</div>
+>>>>>>> Stashed changes
 
     <div id="overlay"></div>
 
@@ -90,12 +94,13 @@
         </div>
     </nav>
 
-    <div class="allTasks" id="allTasks"> 
-        <ul>
-            <h1>My Tasks</h1>
-            <li><button id="add-task-btn">Add a task</button></li>
-        </ul>
-    </div>
+    <div class="allTasks" id="allTasks">
+    <ul>
+        <h1>My Tasks</h1>
+        <li><button id="add-task-btn">Add a task</button></li>
+        <?php include 'fetch_tasks.php'; ?>
+    </ul>
+</div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
