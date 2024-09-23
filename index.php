@@ -40,9 +40,7 @@
     <div class="off-screen-menu" id="off-screen-menu">
         <ul class="nav-links">
             <li><button data-task-target="#create-task-box">Create Task</button></li>
-            <li><a href="#" id="all-tasks-link">All Tasks (<span id="task-count">0</span>)</a></li>
-            <li><a href="#">Starred</a></li>
-            <li><a href="#create-list-box" id="create-new-list">Create New List +</a></li>
+            <li><button data-task-target="#create-list-box">Create New List +</button></li>
         </ul>
     </div>
 
@@ -99,38 +97,38 @@
     </nav>
 
     <div class="allTasks" id="allTasks">
-        <ul>
-            <h1>My Lists</h1>
-            <li><button id="add-task-btn" data-task-target="#create-task-box">Add a task</button></li>
-            <?php
-            // Fetch task sections (lists)
-            $sql_sections = "SELECT * FROM task_sections";
-            $result_sections = $conn->query($sql_sections);
+        <?php
+        // Fetch task sections (lists)
+        $sql_sections = "SELECT * FROM task_sections";
+        $result_sections = $conn->query($sql_sections);
 
-            if ($result_sections->num_rows > 0) {
-                while ($section = $result_sections->fetch_assoc()) {
-                    echo "<li><strong>" . htmlspecialchars($section['section_name']) . "</strong></li>";
-                    
-                    // Fetch tasks for this section
-                    $section_id = $section['section_id'];
-                    $sql_tasks = "SELECT * FROM tasks WHERE section_id = $section_id";
-                    $result_tasks = $conn->query($sql_tasks);
+        if ($result_sections->num_rows > 0) {
+            while ($section = $result_sections->fetch_assoc()) {
+                // Here's where the new div with class 'task-section' is added:
+                echo '<div class="task-section">';  // Creates a new box for each task section
+                echo "<strong>" . htmlspecialchars($section['section_name']) . "</strong>";
+                
+                // Fetch tasks for this section
+                $section_id = $section['section_id'];
+                $sql_tasks = "SELECT * FROM tasks WHERE section_id = $section_id";
+                $result_tasks = $conn->query($sql_tasks);
 
-                    if ($result_tasks->num_rows > 0) {
-                        echo "<ul>";
-                        while ($task = $result_tasks->fetch_assoc()) {
-                            echo "<li>" . htmlspecialchars($task['title']) . " - Status: " . htmlspecialchars($task['status']) . "</li>";
-                        }
-                        echo "</ul>";
-                    } else {
-                        echo "<ul><li>No tasks in this list.</li></ul>";
+                if ($result_tasks->num_rows > 0) {
+                    echo "<ul>";
+                    while ($task = $result_tasks->fetch_assoc()) {
+                        echo "<li>" . htmlspecialchars($task['title']) . " - Status: " . htmlspecialchars($task['status']) . "</li>";
                     }
+                    echo "</ul>";
+                } else {
+                    echo "<p>No tasks in this list.</p>";
                 }
-            } else {
-                echo "<li>No lists found.</li>";
+
+                echo '</div>';  // Closing the 'task-section' div for each section
             }
-            ?>
-        </ul>
+        } else {
+            echo "<p>No lists found.</p>";
+        }
+        ?>
     </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
