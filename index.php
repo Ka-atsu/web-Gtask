@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yes</title>
+    <title>Task Manager</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -23,7 +23,6 @@
             background-color: #e0e0e0 !important;
             color: #000;
         }
-         
         .task-list {
             display: none; 
             list-style-type: none;
@@ -32,7 +31,6 @@
         .task-list.visible {
             display: block;
         }
-
         .dropdown-btn {
             cursor: pointer;
         }
@@ -41,26 +39,33 @@
 <body>
     <div class="off-screen-menu" id="off-screen-menu">
         <ul class="nav-links">
-            <li><button data-task-target="#create-task-box">Create</button></li>
+            <li><button data-task-target="#create-task-box">Create Task</button></li>
             <li><a href="#" id="all-tasks-link">All Tasks (<span id="task-count">0</span>)</a></li>
             <li><a href="#">Starred</a></li>
-            <li><a href="#" id="list-tasks" class="dropdown-btn">List of Tasks ▼</a>
-                <ul class="task-list" id="task-list">
-                <h1>My Tasks</h1>
-                </ul>
-            </li>
-            <li><a href="#create-list-box" id="create-new-list">Create new list +</a>
+            <li><a href="#create-list-box" id="create-new-list">Create New List +</a></li>
         </ul>
     </div>
 
-      <!-- Create Task Box -->
+    <!-- Create Task Box -->
     <div class="create-task-box" id="create-task-box">
         <div class="Closing-tab">
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="Input">
             <form action="submit_task.php" method="POST">
-                <input type="text" name="title" class="title" placeholder="ADD Task Title">
+                <select name="section_id" required>
+                    <option value="">Select List</option>
+                    <?php
+                    include 'db_connect.php'; // Ensure this file contains your DB connection
+                    // Fetch sections to populate the dropdown
+                    $sql_sections = "SELECT * FROM task_sections";
+                    $result_sections = $conn->query($sql_sections);
+                    while ($section = $result_sections->fetch_assoc()) {
+                        echo "<option value='" . $section['section_id'] . "'>" . htmlspecialchars($section['section_name']) . "</option>";
+                    }
+                    ?>
+                </select>
+                <input type="text" name="title" class="title" placeholder="ADD Task Title" required>
                 <input type="datetime-local" class="form-control" name="task_date" placeholder="Select DateTime" style="color: white;">
                 <button class="create-task-btn">Create Task</button>
             </form>
@@ -73,15 +78,17 @@
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="Input">
-            <input type="text" name="title" class="title" placeholder="Name">
-            <button class="create-task-btn">DONE</button>
+            <form action="create_section.php" method="POST">
+                <input type="text" name="section_name" class="title" placeholder="New List Name" required>
+                <button class="create-task-btn">Create New List</button>
+            </form>
         </div>
     </div>
 
     <div id="overlay"></div>
 
     <nav class="navbar">
-        <h1>TASK</h1>
+        <h1>TASK MANAGER</h1>
         <div class="hamburger" id="hamburger">
             <div class="hamburger-content">
                 <span></span>
@@ -92,12 +99,39 @@
     </nav>
 
     <div class="allTasks" id="allTasks">
-    <ul>
-        <h1>My Tasks</h1>
-        <li><button id="add-task-btn" data-task-target="#create-task-box">Add a task</button></li>
-        <?php include 'fetch_tasks.php'; ?>
-    </ul>
-</div>
+        <ul>
+            <h1>My Lists</h1>
+            <li><button id="add-task-btn" data-task-target="#create-task-box">Add a task</button></li>
+            <?php
+            // Fetch task sections (lists)
+            $sql_sections = "SELECT * FROM task_sections";
+            $result_sections = $conn->query($sql_sections);
+
+            if ($result_sections->num_rows > 0) {
+                while ($section = $result_sections->fetch_assoc()) {
+                    echo "<li><strong>" . htmlspecialchars($section['section_name']) . "</strong></li>";
+                    
+                    // Fetch tasks for this section
+                    $section_id = $section['section_id'];
+                    $sql_tasks = "SELECT * FROM tasks WHERE section_id = $section_id";
+                    $result_tasks = $conn->query($sql_tasks);
+
+                    if ($result_tasks->num_rows > 0) {
+                        echo "<ul>";
+                        while ($task = $result_tasks->fetch_assoc()) {
+                            echo "<li>" . htmlspecialchars($task['title']) . " - Status: " . htmlspecialchars($task['status']) . "</li>";
+                        }
+                        echo "</ul>";
+                    } else {
+                        echo "<ul><li>No tasks in this list.</li></ul>";
+                    }
+                }
+            } else {
+                echo "<li>No lists found.</li>";
+            }
+            ?>
+        </ul>
+    </div>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

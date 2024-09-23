@@ -1,16 +1,13 @@
 <?php
 include 'db_connect.php';
-
-$sql = "SELECT * FROM tasks ORDER BY task_date ASC";
+$section_id = 1; // Example for "Work" section
+$sql = "SELECT * FROM tasks WHERE section_id = $section_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        echo "<li>" . $row['title'] . " - " . $row['task_date'] . "</li>";
+        echo "Task: " . $row['title'] . " - Status: " . $row['status'] . "<br>";
     }
 } else {
-    echo "<li>No tasks found</li>";
+    echo "No tasks found for this section.";
 }
-
-$conn->close();
-?>

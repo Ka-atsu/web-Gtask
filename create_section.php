@@ -2,14 +2,12 @@
 include 'db_connect.php'; // Include your database connection file
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the data from the POST request
-    $section_id = $_POST['section_id'];
-    $title = trim($_POST['title']);
-    $task_date = $_POST['task_date'];
+    // Get the section name from the POST request
+    $section_name = trim($_POST['section_name']);
 
     // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO tasks (section_id, title, description, status, created_at) VALUES (?, ?, '', 'pending', ?)");
-    $stmt->bind_param("iss", $section_id, $title, $task_date);
+    $stmt = $conn->prepare("INSERT INTO task_sections (section_name) VALUES (?)");
+    $stmt->bind_param("s", $section_name);
 
     // Execute the statement
     if ($stmt->execute()) {
