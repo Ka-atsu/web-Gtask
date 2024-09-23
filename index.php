@@ -23,7 +23,6 @@
             background-color: #e0e0e0 !important;
             color: #000;
         }
-
          
         .task-list {
             display: none; 
@@ -50,36 +49,34 @@
                 <h1>My Tasks</h1>
                 </ul>
             </li>
-            <li><a href="#" id="create-new-list">Create new list +</a>
+            <li><a href="#create-list-box" id="create-new-list">Create new list +</a>
         </ul>
     </div>
 
+      <!-- Create Task Box -->
     <div class="create-task-box" id="create-task-box">
-    <div class="Closing-tab">
-        <button data-close-button class="close-button">&times;</button>
+        <div class="Closing-tab">
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="Input">
+            <form action="submit_task.php" method="POST">
+                <input type="text" name="title" class="title" placeholder="ADD Task Title">
+                <input type="datetime-local" class="form-control" name="task_date" placeholder="Select DateTime" style="color: white;">
+                <button class="create-task-btn">Create Task</button>
+            </form>
+        </div>
     </div>
-<<<<<<< Updated upstream
 
+    <!-- Create List Box -->
     <div class="create-list-box" id="create-list-box">
         <div class="Closing-tab">
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="Input">
-            <input type="text" name="title" class="title">
-            <label class="placeHolder">Add List Title</label>
+            <input type="text" name="title" class="title" placeholder="Name">
             <button class="create-task-btn">DONE</button>
         </div>
     </div>
-=======
-    <div class="Input">
-        <form action="submit_task.php" method="POST">
-            <input type="text" name="title" class="title" placeholder="Add Title" required>
-            <input type="datetime-local" name="task_date" class="form-control" placeholder="Select DateTime" required>
-            <button type="submit" class="create-task-btn">Create Task</button>
-        </form>
-    </div>
-</div>
->>>>>>> Stashed changes
 
     <div id="overlay"></div>
 
@@ -97,7 +94,7 @@
     <div class="allTasks" id="allTasks">
     <ul>
         <h1>My Tasks</h1>
-        <li><button id="add-task-btn">Add a task</button></li>
+        <li><button id="add-task-btn" data-task-target="#create-task-box">Add a task</button></li>
         <?php include 'fetch_tasks.php'; ?>
     </ul>
 </div>

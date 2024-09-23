@@ -223,15 +223,6 @@ h1{
     color: #EEEEEE;
     border-radius: 2px;
 }
-.placeHolder{
-    position: absolute;
-    top: 20px;
-    left: 18px;
-    font-size: 14px;
-    color: #EEEEEE;
-    transition: 0.3s;
-    pointer-events: none;
-}
 .title:focus + .placeHolder{
     top: 1px;
     color: #EEEEEE;
