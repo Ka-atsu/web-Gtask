@@ -106,6 +106,7 @@
             while ($section = $result_sections->fetch_assoc()) {
                 // Here's where the new div with class 'task-section' is added:
                 echo '<div class="task-section">';  // Creates a new box for each task section
+                echo '<button data-close-button class="close-button">⋮</button>';
                 echo "<strong>" . htmlspecialchars($section['section_name']) . "</strong>";
                 
                 // Fetch tasks for this section
