@@ -89,7 +89,11 @@
                     if ($result_tasks->num_rows > 0) {
                         echo "<ul>";
                         while ($task = $result_tasks->fetch_assoc()) {
-                            echo "<li>" . htmlspecialchars($task['title']) . " - Status: " . htmlspecialchars($task['status']) . "</li>";
+                            echo 
+                                "<li>" .
+                                    '<input type="radio" id="'.$task['task_id'].'" name="task">'. 
+                                    '<label for="'.$task['task_id'].'" >' .htmlspecialchars($task['title']).'</label>'. 
+                                "</li>";
                         }
                         echo "</ul>";
                     } else {
