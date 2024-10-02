@@ -140,7 +140,7 @@ h1{
 }
 .allTasks p{
     margin-top: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(232, 235, 241);
 }
 .allTasks ul {
     list-style-type: none; 
@@ -325,3 +325,48 @@ ul li {
     border-radius: 5px; 
     cursor: pointer; 
 }
+
+.dropDownMenu {
+    width: 5%; 
+    float: right;
+    background-color: rgb(232, 235, 241);
+}
+
+.dropDownMenu input.dropDownButton{
+    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.dropDownMenu input {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+.dropDownMenu .options{
+    display: none;
+    position: absolute;
+    background-color: hsl(0, 0%, 95%);
+    min-width: 100px;
+    box-shadow: 2px 2px 5px hsla(0, 0%, 5%, 0.466);
+}
+
+.dropDownMenu:hover .options{
+    display: block;
+}
+
+.listTasks{
+    width: 95%; 
+    float: left; 
+    margin-bottom: 20px;
+    background-color: rgb(232, 235, 241);
+}
+
+.listTasks label {
+    margin-left: 10px;
+    background-color: rgb(232, 235, 241);
+}
+

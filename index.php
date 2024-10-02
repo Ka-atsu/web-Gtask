@@ -91,8 +91,18 @@
                         while ($task = $result_tasks->fetch_assoc()) {
                             echo 
                                 "<li>" .
-                                    '<input type="radio" id="'.$task['task_id'].'" name="task">'. 
-                                    '<label for="'.$task['task_id'].'" >' .htmlspecialchars($task['title']).'</label>'. 
+                                    '<div class="listTasks">'.
+                                        '<input type="radio" id="'.$task['task_id'].'" name="task">'. 
+                                        '<label for="'.$task['task_id'].'">' .htmlspecialchars($task['title']).'</label>'.   
+                                    '</div>'.
+                                    '<div class="dropDownMenu">'.
+                                        '<input type="button" value="⋮" class="dropDownButton">'.
+                                        '<div class="options">'.
+                                            '<form method="POST" action="delete_task_list.php">'.
+                                                '<a href=#>Update</a>'.
+                                                '<a href=#>Delete</a>'.
+                                        '</div>'.
+                                    '<div>'. 
                                 "</li>";
                         }
                         echo "</ul>";

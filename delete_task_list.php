@@ -17,5 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_section_id'])) 
     // Close statement and connection
     $stmt->close();
 }
+
+
 $conn->close();
 ?>
