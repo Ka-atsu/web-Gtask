@@ -56,4 +56,5 @@ if ($conn->query($tasks) === TRUE) {
 } else {
     echo "Error creating 'tasks' table: " . $conn->error;
 }
+
 ?>

@@ -1,6 +1,6 @@
 <?php
 include 'db_connect.php';
-$section_id = 1; // Example for "Work" section
+$section_id = 1; 
 $sql = "SELECT * FROM tasks WHERE section_id = $section_id";
 $result = $conn->query($sql);
 
