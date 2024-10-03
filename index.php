@@ -87,7 +87,7 @@
                     $result_tasks = $conn->query($sql_tasks);
 
                     if ($result_tasks->num_rows > 0) {
-                        echo '<form method="POST" action="delete_task_list">'; // General form to handle update/delete actions
+                        echo '<form method="POST" action="delete_task_list.php">'; // General form to handle update/delete actions
                         echo "<ul>";
                         while ($task = $result_tasks->fetch_assoc()) {
                             echo 
@@ -101,6 +101,8 @@
                                         '<input type="checkbox" id="toggle-'.$task['task_id'].'" class="dropdown-toggle">'.
                                         '<label for="toggle-'.$task['task_id'].'" class="dropDownButton">⋮</label>'.
                                         '<div class="optionsDropDown">'.
+                                            // Hidden inputs to send task ID with each action
+                                            '<input type="hidden" name="task_id" value="'.$task['task_id'].'">'.
                                             '<button type="submit" class="action-btn" name="action" value="update">Update</button>'.
                                             '<button type="submit" class="action-btn" name="action" value="delete">Delete</button>'.
                                         '</div>'.
