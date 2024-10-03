@@ -87,7 +87,7 @@
                     $result_tasks = $conn->query($sql_tasks);
 
                     if ($result_tasks->num_rows > 0) {
-                        echo '<form method="POST" action="delete-task-list.php">'; 
+                        echo '<form method="POST" action="delete_task_list">'; // General form to handle update/delete actions
                         echo "<ul>";
                         while ($task = $result_tasks->fetch_assoc()) {
                             echo 

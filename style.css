@@ -344,13 +344,12 @@ h1{
 /* Dropdown container for ⋮ button and delete form */
 .dropDown {
     position: relative;
-    color: #333;
     background-color: rgb(232, 235, 241);
 }
 
 /* Hide the actual checkbox */
 .dropdown-toggle {
-    display: none; /* Hide checkbox */
+    display: none; 
 }
 
 /* ⋮ Dropdown button */
@@ -360,31 +359,30 @@ h1{
     font-size: 20px;
     cursor: pointer;
     padding: 0;
+    color: #000000;
+    background-color: rgb(232, 235, 241);
 }
 
 /* Dropdown options hidden by default */
 .optionsDropDown {
     display: none; 
     position: absolute;
-    top: 20px;
     right: 0;
     z-index: 100;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     min-width: 100px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 /* Show options when the dropdown is checked */
 .dropdown-toggle:checked + .dropDownButton + .optionsDropDown {
-    display: block; /* Show options when checkbox is checked */
+    display: block; 
 }
 
 /* Delete button */
 .optionsDropDown .action-btn {
-    color: #000000; /* White text for contrast */
-    font-size: 14px; /* Button text size */
-    border: none; /* No border */
-    cursor: pointer; /* Hand cursor to indicate it's clickable */
-    padding: 10px 16px; /* Comfortable padding for the button */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for background and hover effects */
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
 }
+
