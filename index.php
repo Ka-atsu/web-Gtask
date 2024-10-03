@@ -102,7 +102,7 @@
                                                 '<a href=#>Update</a>'.
                                                 '<a href=#>Delete</a>'.
                                         '</div>'.
-                                    '</div>'. 
+                                    '<div>'. 
                                 "</li>";
                         }
                         echo "</ul>";
