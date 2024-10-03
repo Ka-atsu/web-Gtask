@@ -87,29 +87,33 @@
                     $result_tasks = $conn->query($sql_tasks);
 
                     if ($result_tasks->num_rows > 0) {
+                        echo '<form method="POST" action="delete-task-list.php">'; 
                         echo "<ul>";
                         while ($task = $result_tasks->fetch_assoc()) {
                             echo 
-                                "<li>" .
-                                    '<div class="listTasks">'.
-                                        '<input type="radio" id="'.$task['task_id'].'" name="task">'. 
-                                        '<label for="'.$task['task_id'].'">' .htmlspecialchars($task['title']).'</label>'.   
+                            "<li>" .
+                                '<div class="taskContainer">'.
+                                    '<div class="taskDiv">'.
+                                        '<input type="radio" id="'.$task['task_id'].'" name="selected_task" value="'.$task['task_id'].'">'.
+                                        '<label for="'.$task['task_id'].'">' . htmlspecialchars($task['title']) . '</label>'.
                                     '</div>'.
-                                    '<div class="dropDownMenu">'.
-                                        '<input type="button" value="⋮" class="dropDownButton">'.
-                                        '<div class="options">'.
-                                            '<form method="POST" action="delete_task_list.php">'.
-                                                '<a href=#>Update</a>'.
-                                                '<a href=#>Delete</a>'.
+                                    '<div class="dropDown">'.
+                                        '<input type="checkbox" id="toggle-'.$task['task_id'].'" class="dropdown-toggle">'.
+                                        '<label for="toggle-'.$task['task_id'].'" class="dropDownButton">⋮</label>'.
+                                        '<div class="optionsDropDown">'.
+                                            '<button type="submit" class="action-btn" name="action" value="update">Update</button>'.
+                                            '<button type="submit" class="action-btn" name="action" value="delete">Delete</button>'.
                                         '</div>'.
-                                    '<div>'. 
-                                "</li>";
+                                    '</div>'.
+                                '</div>'.
+                            "</li>";
                         }
                         echo "</ul>";
+                        echo '</form>';
                     } else {
                         echo "<p>No tasks in this list.</p>";
                     }
-
+    
                     echo '</div>';  
                 }
             } else {

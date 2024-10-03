@@ -52,3 +52,4 @@ taskListDropdownBtn.addEventListener('click', () => {
         ? 'List of Tasks ▲' 
         : 'List of Tasks ▼';
 });
+

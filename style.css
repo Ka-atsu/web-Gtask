@@ -302,14 +302,6 @@ h1{
     font-size: 18px;
 }
 
-ul {
-    padding-left: 20px;
-}
-
-ul li {
-    margin-top: 5px;
-    color: #000000;
-}
 .custom-select {
     width: 200px; 
     padding: 5px;
@@ -326,47 +318,73 @@ ul li {
     cursor: pointer; 
 }
 
-.dropDownMenu {
-    width: 5%; 
-    float: right;
+/* Task container to hold tasks and dropdown */
+.taskContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: rgb(232, 235, 241);
 }
 
-.dropDownMenu input.dropDownButton{
-    color: black;
+/* Task div for radio and label */
+.taskDiv {
+    display: flex;
+    align-items: center;
+    background-color: rgb(232, 235, 241);
+}
+
+/* Label for the task */
+.taskDiv label {
+    margin-left: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: rgb(232, 235, 241);
+}
+
+/* Dropdown container for ⋮ button and delete form */
+.dropDown {
+    position: relative;
+    color: #333;
+    background-color: rgb(232, 235, 241);
+}
+
+/* Hide the actual checkbox */
+.dropdown-toggle {
+    display: none; /* Hide checkbox */
+}
+
+/* ⋮ Dropdown button */
+.dropDownButton {
     background: none;
     border: none;
+    font-size: 20px;
     cursor: pointer;
+    padding: 0;
 }
 
-.dropDownMenu input {
-    display: block;
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
-}
-
-.dropDownMenu .options{
-    display: none;
+/* Dropdown options hidden by default */
+.optionsDropDown {
+    display: none; 
     position: absolute;
-    background-color: hsl(0, 0%, 95%);
+    top: 20px;
+    right: 0;
+    z-index: 100;
     min-width: 100px;
-    box-shadow: 2px 2px 5px hsla(0, 0%, 5%, 0.466);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
-.dropDownMenu:hover .options{
-    display: block;
+/* Show options when the dropdown is checked */
+.dropdown-toggle:checked + .dropDownButton + .optionsDropDown {
+    display: block; /* Show options when checkbox is checked */
 }
 
-.listTasks{
-    width: 95%; 
-    float: left; 
-    margin-bottom: 20px;
-    background-color: rgb(232, 235, 241);
+/* Delete button */
+.optionsDropDown .action-btn {
+    color: #000000; /* White text for contrast */
+    font-size: 14px; /* Button text size */
+    border: none; /* No border */
+    cursor: pointer; /* Hand cursor to indicate it's clickable */
+    padding: 10px 16px; /* Comfortable padding for the button */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for background and hover effects */
 }
-
-.listTasks label {
-    margin-left: 10px;
-    background-color: rgb(232, 235, 241);
-}
-
