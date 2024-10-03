@@ -327,7 +327,8 @@ ul li {
 }
 
 .dropDownMenu {
-    width: 5%; 
+    width: 10%; 
+    margin-bottom: 50px;
     float: right;
     background-color: rgb(232, 235, 241);
 }
@@ -359,7 +360,7 @@ ul li {
 }
 
 .listTasks{
-    width: 95%; 
+    width: 90%; 
     float: left; 
     margin-bottom: 20px;
     background-color: rgb(232, 235, 241);
