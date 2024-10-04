@@ -34,7 +34,7 @@
                     ?>
                 </select>
                 <input type="text" name="title" class="title" placeholder="ADD Task Title" required>
-                <input type="datetime-local" class="form-control" name="task_date" placeholder="Select DateTime" style="color: black;"><br>
+                <input type="datetime-local" class="form-control" name="due_date" placeholder="Due date"required><br> 
                 <button class="create-task-btn">Create Task</button>
             </form>
         </div>
@@ -72,10 +72,10 @@
             $sql_sections = "SELECT * FROM task_sections";
             $result_sections = $conn->query($sql_sections);
 
-            if ($result_sections->num_rows > 0) {
+            if ($result_sections && $result_sections->num_rows > 0) {
                 while ($section = $result_sections->fetch_assoc()) {
                     echo '<div class="task-section">'; 
-                    echo '<form method="POST" action="delete_task_list.php">';
+                    echo '<form method="POST" action="operation.php">';
                     echo '<input type="hidden" name="delete_section_id" value="' . $section['section_id'] . '">';
                     echo '<button type="submit" class="close-button">&times;</button>';
                     echo '</form>';
@@ -87,21 +87,23 @@
                     $result_tasks = $conn->query($sql_tasks);
 
                     if ($result_tasks->num_rows > 0) {
-                        echo '<form method="POST" action="delete_task_list.php">'; // General form to handle update/delete actions
+                        echo '<form method="POST" action="operation.php">'; 
                         echo "<ul>";
                         while ($task = $result_tasks->fetch_assoc()) {
+                            $due_date = date("F j, Y, g:i a", strtotime($task['due_date']));
                             echo 
                             "<li>" .
                                 '<div class="taskContainer">'.
                                     '<div class="taskDiv">'.
-                                        '<input type="radio" id="'.$task['task_id'].'" name="selected_task" value="'.$task['task_id'].'">'.
+                                        '<input type="radio" id="'.$task['task_id'].'" name="selected_task" value="'.$task['task_id'].'" '.($task['status'] === 'completed' ? 'disabled' : '').' onchange="this.form.submit()">'.
                                         '<label for="'.$task['task_id'].'">' . htmlspecialchars($task['title']) . '</label>'.
+                                        '<span class="task-status"> - (' . htmlspecialchars($task['status']) . ')</span>'.
+                                        '<span class="due-date"> (Due: ' . htmlspecialchars($due_date) . ')</span>'.
                                     '</div>'.
                                     '<div class="dropDown">'.
                                         '<input type="checkbox" id="toggle-'.$task['task_id'].'" class="dropdown-toggle">'.
                                         '<label for="toggle-'.$task['task_id'].'" class="dropDownButton">⋮</label>'.
                                         '<div class="optionsDropDown">'.
-                                            // Hidden inputs to send task ID with each action
                                             '<input type="hidden" name="task_id" value="'.$task['task_id'].'">'.
                                             '<button type="submit" class="action-btn" name="action" value="update">Update</button>'.
                                             '<button type="submit" class="action-btn" name="action" value="delete">Delete</button>'.
@@ -114,8 +116,8 @@
                         echo '</form>';
                     } else {
                         echo "<p>No tasks in this list.</p>";
-                    }
-    
+                    }                    
+
                     echo '</div>';  
                 }
             } else {

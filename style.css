@@ -128,15 +128,15 @@ h1{
 .allTasks {
     padding: 20px;      
     margin-right: 200px;
-    transition: margin-right 0.3s ease; /* Transition for margin */
+    transition: margin-right 0.3s ease; 
     display: flex;
     flex-wrap: wrap; 
     max-width: 1920px;
 }
 
 .allTasks.menu-active {
-    margin-right: 0; /* Adjust this to set how much it shrinks when the menu is active */
-    transition: margin-right 0.3s ease; /* Transition for width */
+    margin-right: 0; 
+    transition: margin-right 0.3s ease; 
 }
 .allTasks p{
     margin-top: 20px;
@@ -318,7 +318,6 @@ h1{
     cursor: pointer; 
 }
 
-/* Task container to hold tasks and dropdown */
 .taskContainer {
     display: flex;
     justify-content: space-between;
@@ -326,14 +325,12 @@ h1{
     background-color: rgb(232, 235, 241);
 }
 
-/* Task div for radio and label */
 .taskDiv {
     display: flex;
     align-items: center;
     background-color: rgb(232, 235, 241);
 }
 
-/* Label for the task */
 .taskDiv label {
     margin-left: 8px;
     font-size: 16px;
@@ -341,18 +338,21 @@ h1{
     background-color: rgb(232, 235, 241);
 }
 
-/* Dropdown container for ⋮ button and delete form */
+.taskDiv span{
+    margin-left: 8px;
+    color: #333;
+    background-color: rgb(232, 235, 241);
+}
+
 .dropDown {
     position: relative;
     background-color: rgb(232, 235, 241);
 }
 
-/* Hide the actual checkbox */
 .dropdown-toggle {
     display: none; 
 }
 
-/* ⋮ Dropdown button */
 .dropDownButton {
     background: none;
     border: none;
@@ -363,7 +363,6 @@ h1{
     background-color: rgb(232, 235, 241);
 }
 
-/* Dropdown options hidden by default */
 .optionsDropDown {
     display: none; 
     position: absolute;
@@ -378,7 +377,6 @@ h1{
     display: block; 
 }
 
-/* Delete button */
 .optionsDropDown .action-btn {
     border: none;
     border-radius: 5px;

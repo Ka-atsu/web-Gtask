@@ -44,9 +44,9 @@ $tasks = "CREATE TABLE IF NOT EXISTS tasks (
     task_id INT AUTO_INCREMENT PRIMARY KEY,
     section_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
-    description TEXT,
     status ENUM('pending', 'completed') DEFAULT 'pending',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    due_date DATETIME,
     FOREIGN KEY (section_id) REFERENCES task_sections(section_id) ON DELETE CASCADE
 )";
 
