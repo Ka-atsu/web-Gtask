@@ -199,7 +199,7 @@ h1{
     background-color: rgb(232, 235, 241);
 }
 
-.create-task-box, .create-list-box {
+.create-task-box, .create-list-box, .update-task-box {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -212,7 +212,7 @@ h1{
     max-width: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
-.create-task-box.active, .create-list-box.active {
+.create-task-box.active, .create-list-box.active, .update-task-box.active {
     transform: translate(-50%, -50%) scale(1);
 }
 
@@ -276,7 +276,7 @@ h1{
     border-radius: 2px;
 }
 
-.create-task-btn {
+.create-task-btn, .update-task-btn {
     background-color: #007bff;
     color: white;
     padding: 10px 20px;
@@ -285,7 +285,7 @@ h1{
     cursor: pointer;
     margin-top: 10px;
 }
-.create-task-btn:hover {
+.create-task-btn:hover, .update-task-btn:hover {
     background-color: #0056b3;
 }
 .task-section {

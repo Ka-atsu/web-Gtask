@@ -40,6 +40,28 @@
         </div>
     </div>
 
+    <!-- Update Task Box -->
+    <div class="update-task-box" id="update-task-box">
+        <div class="Closing-tab">
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="Input">
+                <form action="update_task.php" method="POST">
+                <?php
+                $sql_sections = "SELECT * FROM task_sections";
+                $result_sections = $conn->query($sql_sections);
+                while ($section = $result_sections->fetch_assoc()) {
+                    echo "<label>" . htmlspecialchars($section['section_name']) . "</label>";
+                    echo "<input type='hidden' name='section_id' value='" . $section['section_id'] . "'>"; 
+                }
+                ?>
+                <input type="text" name="title" class="title" placeholder="ADD Task Title" required>
+                <input type="datetime-local" class="form-control" name="due_date" placeholder="Due date"required><br> 
+                <button class="update-task-btn">Update Task</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Create List Box -->
     <div class="create-list-box" id="create-list-box">
         <div class="Closing-tab">
@@ -105,7 +127,7 @@
                                         '<label for="toggle-'.$task['task_id'].'" class="dropDownButton">⋮</label>'.
                                         '<div class="optionsDropDown">'.
                                             '<input type="hidden" name="task_id" value="'.$task['task_id'].'">'.
-                                            '<button type="submit" class="action-btn" name="action" value="update">Update</button>'.
+                                            '<button type="button" class="action-btn" data-task-target="#update-task-box">Update</button>'.
                                             '<button type="submit" class="action-btn" name="action" value="delete">Delete</button>'.
                                         '</div>'.
                                     '</div>'.
