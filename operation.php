@@ -38,9 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     echo "Error executing query: " . $stmt->error;
                 }
-            } elseif ($_POST['action'] === 'update') {
-                echo "Update functionality not implemented yet.";
-            }
+            } 
             $stmt->close();
         } else {
             echo "Invalid task ID.";
