@@ -217,6 +217,13 @@ h1{
 .create-task-box.active, .create-list-box.active, .update-task-box.active {
     transform: translate(-50%, -50%) scale(1);
 }
+.update-task-box .SectionTitle{
+    text-align: center;
+}
+.SectionTitle label{
+    font-size: 25px;
+    max-width: 10px;
+}
 
 .Closing-tab {
     padding: 10px 15px;

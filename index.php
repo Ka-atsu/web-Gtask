@@ -45,9 +45,11 @@
         <div class="Closing-tab">
             <button data-close-button class="close-button">&times;</button>
         </div>
+        <div class="SectionTitle">
+            <label id="section" class="section"></label><br> 
+        </div>
         <div class="Input">
                 <form action="update_task.php" method="POST">
-                <label id="section" class="section"></label><br> 
                 <input type="text" name="title" class="title" required>
                 <input type="datetime-local" class="form-control" name="due_date" required><br> 
                 <button class="update-task-btn">Update Task</button>
