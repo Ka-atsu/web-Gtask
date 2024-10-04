@@ -47,16 +47,9 @@
         </div>
         <div class="Input">
                 <form action="update_task.php" method="POST">
-                <?php
-                $sql_sections = "SELECT * FROM task_sections";
-                $result_sections = $conn->query($sql_sections);
-                while ($section = $result_sections->fetch_assoc()) {
-                    echo "<label>" . htmlspecialchars($section['section_name']) . "</label>";
-                    echo "<input type='hidden' name='section_id' value='" . $section['section_id'] . "'>"; 
-                }
-                ?>
-                <input type="text" name="title" class="title" placeholder="ADD Task Title" required>
-                <input type="datetime-local" class="form-control" name="due_date" placeholder="Due date"required><br> 
+                <label id="section" class="section"></label><br> 
+                <input type="text" name="title" class="title" required>
+                <input type="datetime-local" class="form-control" name="due_date" required><br> 
                 <button class="update-task-btn">Update Task</button>
             </form>
         </div>
@@ -119,7 +112,9 @@
                                     '<div class="taskDiv">'.
                                         '<input type="radio" id="'.$task['task_id'].'" name="selected_task" value="'.$task['task_id'].'" '.($task['status'] === 'completed' ? 'disabled' : '').' onchange="this.form.submit()">'.
                                         '<label for="'.$task['task_id'].'">' . htmlspecialchars($task['title']) . '</label>'.
-                                        '<span class="task-status"> - (' . htmlspecialchars($task['status']) . ')</span>'.
+                                    '</div>'.
+                                    '<div class="taskDivSpan">'.
+                                        '<span class="task-status"> (' . htmlspecialchars($task['status']) . ')</span>'.
                                         '<span class="due-date"> (Due: ' . htmlspecialchars($due_date) . ')</span>'.
                                     '</div>'.
                                     '<div class="dropDown">'.
@@ -127,18 +122,15 @@
                                         '<label for="toggle-'.$task['task_id'].'" class="dropDownButton">⋮</label>'.
                                         '<div class="optionsDropDown">'.
                                             '<input type="hidden" name="task_id" value="'.$task['task_id'].'">'.
-                                            '<button type="button" class="action-btn" data-task-target="#update-task-box">Update</button>'.
+                                            '<button type="button" class="action-btn" data-section-title="'.$section['section_name'].'" data-task-id="'.$task['task_id'].'" data-task-title="'.htmlspecialchars($task['title']).'" data-task-due="'.$due_date.'" data-task-target="#update-task-box">Update</button>'.
                                             '<button type="submit" class="action-btn" name="action" value="delete">Delete</button>'.
                                         '</div>'.
                                     '</div>'.
                                 '</div>'.
                             "</li>";
                         }
-                        echo "</ul>";
-                        echo '</form>';
-                    } else {
-                        echo "<p>No tasks in this list.</p>";
-                    }                    
+                        echo "</ul></form>";
+                    }                     
 
                     echo '</div>';  
                 }

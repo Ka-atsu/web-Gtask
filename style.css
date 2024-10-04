@@ -201,6 +201,8 @@ h1{
 
 .create-task-box, .create-list-box, .update-task-box {
     position: fixed;
+    display: flex;
+    flex-direction: column;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
@@ -219,8 +221,8 @@ h1{
 .Closing-tab {
     padding: 10px 15px;
     display: flex;
-    justify-content: space-between;
-    align-items: center; 
+    justify-content: flex-end; /* Center horizontally */
+    border: 0;
 }
 
 .Closing-tab .close-button {
@@ -232,7 +234,10 @@ h1{
     font-weight: bold;  
     color: black;
 }
-
+.Input {
+    position: relative;
+    padding: 10px;
+}
 #overlay {
     position: fixed;
     opacity: 0;
@@ -251,11 +256,9 @@ h1{
     pointer-events: all;
 }
 
-.Input {
-    position: relative;
-    padding: 10px;
-}
+
 .title{
+    margin-top: 10px;
     padding: 10px;
     width: 100%;
     max-width: 400px;
@@ -321,8 +324,8 @@ h1{
 .taskContainer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     background-color: rgb(232, 235, 241);
+    text-wrap: 10px;
 }
 
 .taskDiv {
@@ -336,16 +339,24 @@ h1{
     font-size: 16px;
     color: #333;
     background-color: rgb(232, 235, 241);
+    max-width: 200px;
+    min-width: 200px;
 }
 
-.taskDiv span{
+.taskDivSpan{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(232, 235, 241);
+}
+
+.taskDivSpan span{
     margin-left: 8px;
+    font-size: 16px;
     color: #333;
     background-color: rgb(232, 235, 241);
 }
 
 .dropDown {
-    position: relative;
     background-color: rgb(232, 235, 241);
 }
 

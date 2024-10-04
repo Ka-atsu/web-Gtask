@@ -20,6 +20,27 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             const task = document.querySelector(button.dataset.taskTarget);
             openTask(task);
+            
+           // Populate the update task box if it's the update button
+           if (button.classList.contains('action-btn')) {
+            const taskId = button.getAttribute('data-task-id');
+            const taskTitle = button.getAttribute('data-task-title');
+            const sectionTitle = button.getAttribute('data-section-title');
+            const taskDue = button.getAttribute('data-task-due');
+
+            // Populate fields
+
+            const titleInput = task.querySelector('input[name="title"]');
+            const dueDateInput = task.querySelector('input[name="due_date"]');
+
+            titleInput.value = taskTitle;
+            dueDateInput.value = taskDue;
+            
+            
+            document.getElementById('section').innerHTML = sectionTitle;
+
+            // Set the section ID if needed (you might need to adjust this based on your logic)
+           }
         });
     });
 
