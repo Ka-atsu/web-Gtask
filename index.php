@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
+    <title>Docket</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -75,7 +75,7 @@
     <div id="overlay"></div>
 
     <nav class="navbar">
-        <h1>TASK MANAGER</h1>
+        <h1>DOCKET APPLICATION</h1>
         <div class="hamburger" id="hamburger">
             <div class="hamburger-content">
                 <span></span>
@@ -134,12 +134,14 @@
                             "</li>";
                         }
                         echo "</ul></form>";
+                    } else {
+                        echo '<p style="text-align: center">No tasks found.</p>';
                     }                     
 
                     echo '</div>';  
                 }
             } else {
-                echo "<p>No lists found.</p>";
+                echo '<p style="background-color: rgb(255, 255, 255)">No lists found.</p>';
             }
             ?>
         </div>
