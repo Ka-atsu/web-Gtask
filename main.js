@@ -24,15 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
            // Populate the update task box if it's the update button
            if (button.classList.contains('action-btn')) {
             const taskId = button.getAttribute('data-task-id');
+            const sectionId = button.getAttribute('data-section-id');
             const taskTitle = button.getAttribute('data-task-title');
             const sectionTitle = button.getAttribute('data-section-title');
             const taskDue = button.getAttribute('data-task-due');
 
             // Populate fields
 
-            const titleInput = task.querySelector('input[name="title"]');
-            const dueDateInput = task.querySelector('input[name="due_date"]');
-
+            const taskIdInput = task.querySelector('input[name="update_task_id"]');
+            const sectionIdInput = task.querySelector('input[name="update_section_id"');
+            const titleInput = task.querySelector('input[name="update_title"]');
+            const dueDateInput = task.querySelector('input[name="update_due_date"]');
+            
+            taskIdInput.value = taskId;
+            sectionIdInput.value = sectionId;
             titleInput.value = taskTitle;
             dueDateInput.value = taskDue;
             

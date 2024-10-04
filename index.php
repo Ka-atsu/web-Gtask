@@ -49,10 +49,12 @@
             <label id="section" class="section"></label><br> 
         </div>
         <div class="Input">
-                <form action="update_task.php" method="POST">
-                <input type="text" name="title" class="title" required>
-                <input type="datetime-local" class="form-control" name="due_date" required><br> 
-                <button class="update-task-btn">Update Task</button>
+            <form action="update_task.php" method="POST">
+                <input type="hidden" name="update_task_id">
+                <input type="hidden" name="update_section_id">
+                <input type="text" name="update_title" class="title" required>
+                <input type="datetime-local" class="form-control" name="update_due_date" required><br> 
+                <button type="submit" class="update-task-btn">Update Task</button>
             </form>
         </div>
     </div>
@@ -124,7 +126,7 @@
                                         '<label for="toggle-'.$task['task_id'].'" class="dropDownButton">⋮</label>'.
                                         '<div class="optionsDropDown">'.
                                             '<input type="hidden" name="task_id" value="'.$task['task_id'].'">'.
-                                            '<button type="button" class="action-btn" data-section-title="'.$section['section_name'].'" data-task-id="'.$task['task_id'].'" data-task-title="'.htmlspecialchars($task['title']).'" data-task-due="'.$due_date.'" data-task-target="#update-task-box">Update</button>'.
+                                            '<button type="button" class="action-btn" data-section-title="'.$section['section_name'].'" data-section-id="'.$task['section_id'].'" data-task-id="'.$task['task_id'].'" data-task-title="'.htmlspecialchars($task['title']).'" data-task-due="'.$due_date.'" data-task-target="#update-task-box">Update</button>'.
                                             '<button type="submit" class="action-btn" name="action" value="delete">Delete</button>'.
                                         '</div>'.
                                     '</div>'.
