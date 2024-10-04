@@ -10,8 +10,8 @@
 <body>
     <div class="off-screen-menu" id="off-screen-menu">
         <ul class="nav-links">
-            <li><button data-task-target="#create-task-box">Create Task +</button></li>
-            <li><button data-task-target="#create-list-box">Create New List</button></li>
+            <li><button data-task-target="#create-task-box">+ Create Task</button></li>
+            <li><button data-task-target="#create-list-box">+ Create List</button></li>
         </ul>
     </div>
 
@@ -67,14 +67,14 @@
         <div class="Input">
             <form action="create_section.php" method="POST">
                 <input type="text" name="section_name" class="title" placeholder="New List Name" required>
-                <button class="create-task-btn">Create New List</button>
+                <button class="create-task-btn">Create List</button>
             </form>
         </div>
     </div>
 
     <div id="overlay"></div>
 
-    <nav class="navbar">
+    <header class="navbar">
         <h1>DOCKET APPLICATION</h1>
         <div class="hamburger" id="hamburger">
             <div class="hamburger-content">
@@ -83,7 +83,7 @@
                 <span></span>
             </div>
         </div>
-    </nav>
+    </header>
     <div class="container">
         <div class="allTasks" id="allTasks">
             <?php

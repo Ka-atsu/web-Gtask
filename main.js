@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamBurger = document.querySelector('.hamburger');
     const offScreenMenu = document.querySelector('.off-screen-menu');
     const allTasks = document.querySelector('.allTasks');
+    const navbar = document.querySelector('.navbar');
     const openTaskBox = document.querySelectorAll('[data-task-target]');
     const closeTaskBtn = document.querySelectorAll('[data-close-button]');
     const overlay = document.getElementById('overlay');
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamBurger.classList.toggle('active');
         offScreenMenu.classList.toggle('active');
         allTasks.classList.toggle('menu-active');
+        navbar.classList.toggle('menu-active');
     });
 
     // Open task box functionality
