@@ -77,7 +77,7 @@
     <div id="overlay"></div>
 
     <header class="navbar">
-        <h1>DOCKET APPLICATION</h1>
+        <h1>DOCKET</h1>
         <div class="hamburger" id="hamburger">
             <div class="hamburger-content">
                 <span></span>

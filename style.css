@@ -181,7 +181,7 @@ h1{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     background-color: rgb(232, 235, 241);
-    min-width: 400px;
+    min-width: 600px;
     transition: all 0.4s ease;
     position: relative;
     border-bottom: 5px solid rgb(170, 178, 192);
@@ -234,7 +234,6 @@ h1{
 }
 .create-task-box.active, .create-list-box.active, .update-task-box.active {
     transform: translate(-50%, -50%) scale(1);
-    width: 30%;
     transition: transform 0.5s ease;
     border: 2px solid #34366e;
 }
