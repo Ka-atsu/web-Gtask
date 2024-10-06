@@ -21,6 +21,7 @@
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="Input">
+            <h3>Create Task</h3>
             <form action="submit_task.php" method="POST">
                 <select name="section_id" class="custom-select" required>
                     <option value="">Select List</option>
@@ -65,6 +66,7 @@
             <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="Input">
+            <h3>Create List</h3>
             <form action="create_section.php" method="POST">
                 <input type="text" name="section_name" class="title" placeholder="New List Name" required>
                 <button class="create-task-btn">Create List</button>

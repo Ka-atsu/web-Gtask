@@ -5,7 +5,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 li, a, button {
@@ -35,20 +35,22 @@ li button:hover {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #ffffff;
+    background-color: #222831;
     position: sticky; 
     top: 0; 
     max-width: 88%;
     z-index: 1000; 
     transition: max-width 0.3s ease;
+    border-bottom: 9px solid #34366e;
+    text-align: center;
 }
 .navbar.menu-active{
     max-width: 100%;
 }
 
 h1{
-    color: #000000;
-    background-color: #ffffff;
+    color: white;
+    background-color: #222831;
     padding-left: 10px;
     margin: 0;
 }
@@ -105,12 +107,14 @@ h1{
     width: 50px;
     margin-right: 55px;
     position: relative;
-    background-color: #ffffff;
+    background-color: #222831;
+    border-radius: 10px;
+    cursor: pointer;
 }
 .hamburger span{
     height: 5px;
     width: 100%;
-    background-color: #000000;
+    background-color: white;
     border-radius: 25px;
     position: absolute;
     top: 50%;
@@ -119,6 +123,7 @@ h1{
     transition: .3s ease;
     cursor: pointer;
 }
+
 .hamburger span:nth-child(1){
     top: 25%;
 }
@@ -145,7 +150,9 @@ h1{
 .allTasks p{
     margin-top: 20px;
     background-color: rgb(232, 235, 241);
+    
 }
+
 .allTasks ul {
     list-style-type: none; 
     padding: 0;
@@ -171,11 +178,18 @@ h1{
     flex: 1 1 300px; 
     margin: 20px;
     padding: 10px;
-    border: 1px solid rgb(232, 235, 241);;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     background-color: rgb(232, 235, 241);
-    min-width: 600px;
+    min-width: 400px;
+    transition: all 0.4s ease;
+    position: relative;
+    border-bottom: 5px solid rgb(170, 178, 192);
+    border-right: 5px solid rgb(170, 178, 192);
+}
+
+.task-section:hover {
+    transform:scale(0.9);
 }
 
 .task-section strong {
@@ -220,7 +234,25 @@ h1{
 }
 .create-task-box.active, .create-list-box.active, .update-task-box.active {
     transform: translate(-50%, -50%) scale(1);
+    width: 30%;
+    transition: transform 0.5s ease;
+    border: 2px solid #34366e;
 }
+
+.create-task-box h3 {
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.create-list-box h3 {
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .update-task-box .SectionTitle{
     text-align: center;
 }
@@ -230,7 +262,7 @@ h1{
 }
 
 .Closing-tab {
-    padding: 10px 15px;
+    padding: 3px 15px;
     display: flex;
     justify-content: flex-end; 
     border: 0;
@@ -240,11 +272,18 @@ h1{
     cursor: pointer;
     border: 0;
     outline: none;
+    padding: 1px 25px;
     background: none;
     font-size: 1.25rem;
     font-weight: bold;  
     color: black;
 }
+
+.Closing-tab .close-button:hover {
+    color: white;
+    background-color: rgb(184, 0, 0);
+}
+
 .Input {
     position: relative;
     padding: 10px;
@@ -291,13 +330,14 @@ h1{
 }
 
 .create-task-btn, .update-task-btn {
-    background-color: #007bff;
+    background-color: #212135;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
+    margin-left: 250px;
 }
 .create-task-btn:hover, .update-task-btn:hover {
     background-color: #0056b3;
