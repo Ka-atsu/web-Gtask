@@ -116,7 +116,9 @@
                             "<li>" .
                                 '<div class="taskContainer">'.
                                     '<div class="taskDiv">'.
-                                        '<input type="radio" id="'.$task['task_id'].'" name="selected_task" value="'.$task['task_id'].'" '.($task['status'] === 'completed' ? 'disabled' : '').' onchange="this.form.submit()">'.
+                                        '<input type="radio" id="'.$task['task_id'].
+                                        '" name="selected_task" value="'.$task['task_id'].
+                                        '" '.($task['status'] === 'completed' ? 'disabled' : '').' onchange="this.form.submit()">'.
                                         '<label for="'.$task['task_id'].'">' . htmlspecialchars($task['title']) . '</label>'.
                                     '</div>'.
                                     '<div class="taskDivSpan">'.
@@ -128,7 +130,12 @@
                                         '<label for="toggle-'.$task['task_id'].'" class="dropDownButton">⋮</label>'.
                                         '<div class="optionsDropDown">'.
                                             '<input type="hidden" name="task_id" value="'.$task['task_id'].'">'.
-                                            '<button type="button" class="action-btn" data-section-title="'.$section['section_name'].'" data-section-id="'.$task['section_id'].'" data-task-id="'.$task['task_id'].'" data-task-title="'.htmlspecialchars($task['title']).'" data-task-due="'.$due_date.'" data-task-target="#update-task-box">Update</button>'.
+                                            '<button type="button" class="action-btn" data-section-title="'.$section['section_name'].
+                                            '" data-section-id="'.$task['section_id'].
+                                            '" data-task-id="'.$task['task_id'].
+                                            '" data-task-title="'.htmlspecialchars($task['title']).
+                                            '" data-task-due="'.$due_date.
+                                            '" data-task-target="#update-task-box" '.($task['status'] === 'completed' ? 'disabled' : '').' onchange="this.form.submit()">Update</button>'.
                                             '<button type="submit" class="action-btn" name="action" value="delete">Delete</button>'.
                                         '</div>'.
                                     '</div>'.
